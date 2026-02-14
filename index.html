@@ -1,0 +1,523 @@
+import React from "react";
+import { motion } from "framer-motion";
+import {
+  ArrowRight,
+  Globe2,
+  ShieldCheck,
+  LineChart,
+  Layers,
+  Building2,
+  Sparkles,
+  Mail,
+} from "lucide-react";
+
+const Gold = "text-[#C6A75E]";
+
+const Container = ({ children }: { children: React.ReactNode }) => (
+  <div className="mx-auto w-full max-w-6xl px-5 sm:px-8">{children}</div>
+);
+
+const Chip = ({ children }: { children: React.ReactNode }) => (
+  <span className="inline-flex items-center rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs tracking-wide text-white/80">
+    {children}
+  </span>
+);
+
+const PrimaryButton = ({ children }: { children: React.ReactNode }) => (
+  <button className="group inline-flex items-center gap-2 rounded-2xl bg-[#C6A75E] px-5 py-3 text-sm font-semibold text-[#0D0D0D] shadow-sm shadow-black/30 transition hover:brightness-110">
+    {children}
+    <ArrowRight className="h-4 w-4 transition group-hover:translate-x-0.5" />
+  </button>
+);
+
+const SecondaryButton = ({ children }: { children: React.ReactNode }) => (
+  <button className="inline-flex items-center gap-2 rounded-2xl border border-white/15 bg-white/5 px-5 py-3 text-sm font-semibold text-white/90 shadow-sm shadow-black/20 transition hover:bg-white/10">
+    {children}
+  </button>
+);
+
+const Card = ({
+  icon,
+  title,
+  children,
+}: {
+  icon: React.ReactNode;
+  title: string;
+  children: React.ReactNode;
+}) => (
+  <div className="rounded-3xl border border-white/10 bg-white/5 p-6 shadow-sm shadow-black/30">
+    <div className="flex items-start gap-3">
+      <div className="rounded-2xl border border-white/10 bg-black/30 p-3">
+        {icon}
+      </div>
+      <div>
+        <div className="text-base font-semibold text-white">{title}</div>
+        <div className="mt-2 text-sm leading-relaxed text-white/70">{children}</div>
+      </div>
+    </div>
+  </div>
+);
+
+const SectionTitle = ({
+  eyebrow,
+  title,
+  desc,
+}: {
+  eyebrow: string;
+  title: string;
+  desc?: string;
+}) => (
+  <div className="max-w-3xl">
+    <div className={`text-xs font-semibold uppercase tracking-[0.24em] ${Gold}`}>
+      {eyebrow}
+    </div>
+    <div className="mt-3 text-2xl font-semibold tracking-tight text-white sm:text-3xl">
+      {title}
+    </div>
+    {desc ? (
+      <div className="mt-3 text-sm leading-relaxed text-white/70 sm:text-base">
+        {desc}
+      </div>
+    ) : null}
+  </div>
+);
+
+const Divider = () => (
+  <div className="my-10 h-px w-full bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+);
+
+export default function NovaraVCWebsite() {
+  return (
+    <div className="min-h-screen bg-[#0B0F16] text-white">
+      {/* Background */}
+      <div className="pointer-events-none fixed inset-0">
+        <div className="absolute -top-40 left-1/2 h-[520px] w-[520px] -translate-x-1/2 rounded-full bg-[#C6A75E]/10 blur-3xl" />
+        <div className="absolute bottom-[-220px] left-[-220px] h-[520px] w-[520px] rounded-full bg-white/5 blur-3xl" />
+      </div>
+
+      {/* Nav */}
+      <header className="sticky top-0 z-40 border-b border-white/10 bg-[#0B0F16]/70 backdrop-blur-xl">
+        <Container>
+          <div className="flex items-center justify-between py-4">
+            <a href="#" className="flex items-center gap-3">
+              <div className="grid h-10 w-10 place-items-center rounded-2xl border border-white/10 bg-black/30">
+                <span className={`text-lg font-bold ${Gold}`}>NV</span>
+              </div>
+              <div className="leading-tight">
+                <div className="text-sm font-semibold tracking-wide">NOVARA</div>
+                <div className="text-[11px] tracking-[0.18em] text-white/60">
+                  VENTURES MANAGEMENT LLC
+                </div>
+              </div>
+            </a>
+
+            <nav className="hidden items-center gap-6 text-sm text-white/75 md:flex">
+              <a className="hover:text-white" href="#about">
+                About
+              </a>
+              <a className="hover:text-white" href="#strategy">
+                Strategy
+              </a>
+              <a className="hover:text-white" href="#portfolio">
+                Portfolio
+              </a>
+              <a className="hover:text-white" href="#global">
+                Global
+              </a>
+              <a className="hover:text-white" href="#contact">
+                Contact
+              </a>
+            </nav>
+
+            <div className="hidden md:block">
+              <a href="#contact">
+                <PrimaryButton>Partner With Us</PrimaryButton>
+              </a>
+            </div>
+          </div>
+        </Container>
+      </header>
+
+      {/* Hero */}
+      <section className="relative overflow-hidden pt-14 sm:pt-20">
+        <Container>
+          <div className="grid items-center gap-10 md:grid-cols-12">
+            <div className="md:col-span-7">
+              <div className="flex flex-wrap gap-2">
+                <Chip>
+                  <Globe2 className="mr-2 h-3.5 w-3.5 text-white/70" /> Global Investment
+                  Management
+                </Chip>
+                <Chip>
+                  <Layers className="mr-2 h-3.5 w-3.5 text-white/70" /> Multi-Sector Venture
+                  & Growth
+                </Chip>
+                <Chip>
+                  <ShieldCheck className="mr-2 h-3.5 w-3.5 text-white/70" /> Institutional
+                  Discipline
+                </Chip>
+              </div>
+
+              <motion.h1
+                initial={{ opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6 }}
+                className="mt-6 text-3xl font-semibold tracking-tight text-white sm:text-5xl"
+              >
+                Building Enduring Global Value Through Strategic Capital
+              </motion.h1>
+
+              <motion.p
+                initial={{ opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.05 }}
+                className="mt-5 max-w-2xl text-sm leading-relaxed text-white/70 sm:text-base"
+              >
+                NOVARA Ventures Management LLC is a global investment management firm deploying
+                venture and growth capital across resilient, high-impact sectors. We combine
+                entrepreneurial insight with institutional discipline—focused on risk-adjusted
+                returns, long-term value creation, and responsible capital deployment.
+              </motion.p>
+
+              <div className="mt-7 flex flex-col gap-3 sm:flex-row">
+                <a href="#strategy">
+                  <PrimaryButton>Explore Our Strategy</PrimaryButton>
+                </a>
+                <a href="#about">
+                  <SecondaryButton>Learn About NOVARA</SecondaryButton>
+                </a>
+              </div>
+
+              <div className="mt-8 grid gap-4 rounded-3xl border border-white/10 bg-white/5 p-5 sm:grid-cols-3">
+                <div>
+                  <div className={`text-2xl font-semibold ${Gold}`}>Global</div>
+                  <div className="mt-1 text-xs text-white/60">
+                    Cross-border structuring & access
+                  </div>
+                </div>
+                <div>
+                  <div className={`text-2xl font-semibold ${Gold}`}>Multi-Sector</div>
+                  <div className="mt-1 text-xs text-white/60">
+                    Venture, growth, and structured capital
+                  </div>
+                </div>
+                <div>
+                  <div className={`text-2xl font-semibold ${Gold}`}>Disciplined</div>
+                  <div className="mt-1 text-xs text-white/60">
+                    Governance-first investment process
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="md:col-span-5">
+              <motion.div
+                initial={{ opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.7, delay: 0.1 }}
+                className="relative rounded-[32px] border border-white/10 bg-black/30 p-6 shadow-sm shadow-black/40"
+              >
+                <div className="flex items-center justify-between">
+                  <div className="text-sm font-semibold">Investment Lens</div>
+                  <div className={`text-xs font-semibold uppercase tracking-[0.22em] ${Gold}`}>
+                    NOVARA
+                  </div>
+                </div>
+
+                <div className="mt-5 space-y-4">
+                  <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
+                    <div className="flex items-center gap-2 text-sm font-semibold">
+                      <LineChart className="h-4 w-4 text-white/70" /> Risk-Adjusted Returns
+                    </div>
+                    <div className="mt-2 text-sm text-white/70">
+                      Emphasis on asymmetric upside, capital preservation, and repeatable
+                      decision-making.
+                    </div>
+                  </div>
+
+                  <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
+                    <div className="flex items-center gap-2 text-sm font-semibold">
+                      <Sparkles className="h-4 w-4 text-white/70" /> Founder-Centric Partnership
+                    </div>
+                    <div className="mt-2 text-sm text-white/70">
+                      We support teams with strategic guidance, networks, and operational
+                      discipline.
+                    </div>
+                  </div>
+
+                  <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
+                    <div className="flex items-center gap-2 text-sm font-semibold">
+                      <Building2 className="h-4 w-4 text-white/70" /> Asset-Backed Optionality
+                    </div>
+                    <div className="mt-2 text-sm text-white/70">
+                      Select real asset and structured opportunities where risk is measurable.
+                    </div>
+                  </div>
+                </div>
+
+                <div className="mt-6 rounded-2xl border border-white/10 bg-white/5 p-4 text-xs text-white/60">
+                  Note: This website is for informational purposes only and does not constitute an
+                  offer to sell or a solicitation of an offer to buy any securities.
+                </div>
+              </motion.div>
+            </div>
+          </div>
+
+          <Divider />
+        </Container>
+      </section>
+
+      {/* About */}
+      <section id="about" className="py-10 sm:py-14">
+        <Container>
+          <div className="grid gap-8 md:grid-cols-12">
+            <div className="md:col-span-5">
+              <SectionTitle
+                eyebrow="About"
+                title="A Global Perspective. A Disciplined Approach."
+                desc="NOVARA Ventures Management LLC is a private global investment management firm deploying strategic capital across high-growth and resilient sectors worldwide."
+              />
+            </div>
+            <div className="md:col-span-7">
+              <div className="space-y-4 text-sm leading-relaxed text-white/70 sm:text-base">
+                <p>
+                  We combine venture agility with institutional discipline—identifying scalable
+                  businesses, transformative technologies, and long-term value opportunities
+                  across emerging and developed markets.
+                </p>
+                <p>
+                  Our philosophy is rooted in capital preservation, asymmetric upside, and
+                  sustainable wealth creation. We prioritize governance, transparency, and
+                  responsible deployment across every stage.
+                </p>
+              </div>
+              <div className="mt-6 grid gap-4 sm:grid-cols-2">
+                <Card icon={<ShieldCheck className={`h-5 w-5 ${Gold}`} />} title="Governance-First">
+                  Rigorous diligence, alignment, and long-term stewardship.
+                </Card>
+                <Card icon={<Globe2 className={`h-5 w-5 ${Gold}`} />} title="Cross-Border Access">
+                  Global networks and structuring capabilities across key markets.
+                </Card>
+              </div>
+            </div>
+          </div>
+
+          <Divider />
+        </Container>
+      </section>
+
+      {/* Strategy */}
+      <section id="strategy" className="py-10 sm:py-14">
+        <Container>
+          <SectionTitle
+            eyebrow="Strategy"
+            title="Strategic Multi-Sector Allocation"
+            desc="We invest where innovation intersects with durable demand—balancing venture opportunity with risk-aware construction."
+          />
+
+          <div className="mt-8 grid gap-4 md:grid-cols-3">
+            <Card icon={<Sparkles className={`h-5 w-5 ${Gold}`} />} title="Venture & Growth">
+              Early-stage through growth equity in category-defining platforms.
+            </Card>
+            <Card icon={<LineChart className={`h-5 w-5 ${Gold}`} />} title="Structured Capital">
+              Flexible structures that improve downside protection and alignment.
+            </Card>
+            <Card icon={<Layers className={`h-5 w-5 ${Gold}`} />} title="Multi-Asset Lens">
+              Allocation across sectors and cycles to support resilient returns.
+            </Card>
+          </div>
+
+          <div className="mt-8 rounded-3xl border border-white/10 bg-white/5 p-6">
+            <div className="text-sm font-semibold text-white">Core Focus Areas</div>
+            <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+              {[
+                "Financial Technology & Digital Infrastructure",
+                "Enterprise Software & Artificial Intelligence",
+                "Real Estate & Asset-Backed Opportunities",
+                "Healthcare & Life Sciences",
+                "Emerging Market Growth Platforms",
+                "Strategic Special Situations",
+              ].map((item) => (
+                <div
+                  key={item}
+                  className="rounded-2xl border border-white/10 bg-black/20 px-4 py-3 text-sm text-white/80"
+                >
+                  {item}
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <Divider />
+        </Container>
+      </section>
+
+      {/* Portfolio */}
+      <section id="portfolio" className="py-10 sm:py-14">
+        <Container>
+          <SectionTitle
+            eyebrow="Portfolio"
+            title="Select Investments"
+            desc="We actively evaluate opportunities globally. Select investments and strategic partnerships may be announced as our portfolio expands."
+          />
+
+          <div className="mt-8 grid gap-4 md:grid-cols-3">
+            <div className="rounded-3xl border border-white/10 bg-white/5 p-6">
+              <div className="text-sm font-semibold text-white">Coming Soon</div>
+              <div className="mt-2 text-sm text-white/70">
+                Add portfolio logos or case studies here when ready.
+              </div>
+            </div>
+            <div className="rounded-3xl border border-white/10 bg-white/5 p-6">
+              <div className="text-sm font-semibold text-white">Case Studies</div>
+              <div className="mt-2 text-sm text-white/70">
+                Highlight 2–3 wins: growth, governance, and strategy.
+              </div>
+            </div>
+            <div className="rounded-3xl border border-white/10 bg-white/5 p-6">
+              <div className="text-sm font-semibold text-white">Sectors</div>
+              <div className="mt-2 text-sm text-white/70">
+                Showcase focus areas and thesis pages for credibility.
+              </div>
+            </div>
+          </div>
+
+          <Divider />
+        </Container>
+      </section>
+
+      {/* Global */}
+      <section id="global" className="py-10 sm:py-14">
+        <Container>
+          <SectionTitle
+            eyebrow="Global"
+            title="Global Reach. Strategic Access."
+            desc="NOVARA operates with a global outlook, enabling cross-border capital flow and strategic partnerships across North America, the Middle East, Asia, and emerging markets."
+          />
+
+          <div className="mt-8 grid gap-4 md:grid-cols-2">
+            <Card icon={<Globe2 className={`h-5 w-5 ${Gold}`} />} title="Cross-Border Structuring">
+              Entity, tax, and compliance-aware structuring for global investment execution.
+            </Card>
+            <Card icon={<ShieldCheck className={`h-5 w-5 ${Gold}`} />} title="Governance & Controls">
+              Clear processes designed for institutional trust, reporting, and long-term
+              stewardship.
+            </Card>
+          </div>
+
+          <Divider />
+        </Container>
+      </section>
+
+      {/* Contact */}
+      <section id="contact" className="py-10 sm:py-14">
+        <Container>
+          <div className="grid gap-10 md:grid-cols-12">
+            <div className="md:col-span-6">
+              <SectionTitle
+                eyebrow="Contact"
+                title="Partner With NOVARA"
+                desc="For investment inquiries, partnerships, or institutional collaboration, reach out."
+              />
+
+              <div className="mt-6 rounded-3xl border border-white/10 bg-white/5 p-6">
+                <div className="space-y-4">
+                  <div>
+                    <div className="flex items-center gap-2 text-sm font-semibold text-white">
+                      <Mail className={`h-4 w-4 ${Gold}`} /> Email
+                    </div>
+                    <div className="mt-2 text-sm text-white/70">
+                      info@novaravc.com
+                    </div>
+                  </div>
+
+                  <div>
+                    <div className="flex items-center gap-2 text-sm font-semibold text-white">
+                      <span className={`inline-flex h-4 w-4 items-center justify-center ${Gold}`}>📞</span>
+                      Phone
+                    </div>
+                    <div className="mt-2 text-sm text-white/70">+1 (347) 791-7183</div>
+                  </div>
+
+                  <div>
+                    <div className="flex items-center gap-2 text-sm font-semibold text-white">
+                      <span className={`inline-flex h-4 w-4 items-center justify-center ${Gold}`}>📍</span>
+                      Office
+                    </div>
+                    <div className="mt-2 text-sm text-white/70">
+                      3747 73rd Rd Ste #201, Jackson Heights, NY 11372
+                    </div>
+                  </div>
+
+                  <div className="text-xs text-white/60">
+                    Add regulatory disclosures as needed.
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="md:col-span-6">
+              <div className="rounded-3xl border border-white/10 bg-white/5 p-6">
+                <div className="text-sm font-semibold text-white">Inquiry Form (UI)
+                </div>
+                <div className="mt-1 text-xs text-white/60">
+                  This is a design-only form. Connect it to your backend/email service.
+                </div>
+
+                <form className="mt-5 space-y-4">
+                  <div className="grid gap-4 sm:grid-cols-2">
+                    <div>
+                      <label className="text-xs text-white/70">First Name</label>
+                      <input
+                        className="mt-2 w-full rounded-2xl border border-white/10 bg-black/30 px-4 py-3 text-sm text-white placeholder:text-white/40 outline-none focus:border-[#C6A75E]/60"
+                        placeholder="John"
+                      />
+                    </div>
+                    <div>
+                      <label className="text-xs text-white/70">Last Name</label>
+                      <input
+                        className="mt-2 w-full rounded-2xl border border-white/10 bg-black/30 px-4 py-3 text-sm text-white placeholder:text-white/40 outline-none focus:border-[#C6A75E]/60"
+                        placeholder="Smith"
+                      />
+                    </div>
+                  </div>
+
+                  <div>
+                    <label className="text-xs text-white/70">Email</label>
+                    <input
+                      className="mt-2 w-full rounded-2xl border border-white/10 bg-black/30 px-4 py-3 text-sm text-white placeholder:text-white/40 outline-none focus:border-[#C6A75E]/60"
+                      placeholder="name@company.com"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="text-xs text-white/70">Message</label>
+                    <textarea
+                      className="mt-2 min-h-[120px] w-full rounded-2xl border border-white/10 bg-black/30 px-4 py-3 text-sm text-white placeholder:text-white/40 outline-none focus:border-[#C6A75E]/60"
+                      placeholder="Tell us about your partnership or investment inquiry..."
+                    />
+                  </div>
+
+                  <PrimaryButton>Submit Inquiry</PrimaryButton>
+                </form>
+              </div>
+            </div>
+          </div>
+
+          <Divider />
+
+          <footer className="pb-10">
+            <div className="flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center">
+              <div className="text-xs text-white/50">
+                © {new Date().getFullYear()} NOVARA Ventures Management LLC. All rights reserved.
+              </div>
+              <div className="text-xs text-white/50">
+                Author/Writer: Mahamudul Hasan
+              </div>
+            </div>
+          </footer>
+        </Container>
+      </section>
+    </div>
+  );
+}
