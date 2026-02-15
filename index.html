@@ -1,205 +1,707 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>NOVARA Ventures Management LLC | Global Investment Management</title>
-<meta name="description" content="NOVARA Ventures Management LLC is a global investment management firm deploying venture and growth capital across resilient sectors worldwide.">
-<meta name="theme-color" content="#0B0F16">
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="theme-color" content="#0B0F16" />
 
-<style>
-:root{
---bg:#0B0F16;
---panel:rgba(255,255,255,.05);
---stroke:rgba(255,255,255,.10);
---text:rgba(255,255,255,.92);
---muted:rgba(255,255,255,.70);
---gold:#C6A75E;
---shadow:0 15px 40px rgba(0,0,0,.35);
-}
-*{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{
-background:var(--bg);
-color:var(--text);
-font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial;
-line-height:1.6;
-}
-.container{max-width:1180px;margin:auto;padding:0 20px}
-.section{padding:80px 0}
-h1{font-size:48px;line-height:1.1}
-h2{font-size:32px;margin-top:10px}
-p{color:var(--muted);margin-top:15px}
-.eyebrow{color:var(--gold);font-size:12px;letter-spacing:3px;font-weight:700}
-.btn{
-display:inline-block;
-padding:14px 22px;
-border-radius:12px;
-font-weight:700;
-text-decoration:none;
-margin-right:10px;
-}
-.btn-primary{background:var(--gold);color:#000}
-.btn-secondary{border:1px solid var(--stroke);color:#fff}
-.card{
-background:var(--panel);
-border:1px solid var(--stroke);
-border-radius:20px;
-padding:25px;
-box-shadow:var(--shadow);
-margin-top:25px;
-}
-.grid{display:grid;gap:25px}
-.grid-2{grid-template-columns:1fr 1fr}
-.grid-3{grid-template-columns:1fr 1fr 1fr}
-header{
-position:sticky;top:0;
-background:rgba(11,15,22,.9);
-border-bottom:1px solid var(--stroke);
-z-index:100;
-}
-.nav{display:flex;justify-content:space-between;align-items:center;padding:18px 0}
-.nav a{text-decoration:none;color:#fff;margin-left:20px;font-size:14px}
-.logo{display:flex;align-items:center;gap:12px}
-.logo img{height:42px}
-.hero{padding-top:100px}
-.footer{
-border-top:1px solid var(--stroke);
-padding:30px 0;
-color:rgba(255,255,255,.5);
-font-size:13px;
-display:flex;
-justify-content:space-between;
-flex-wrap:wrap;
-}
-@media(max-width:900px){
-.grid-2,.grid-3{grid-template-columns:1fr}
-h1{font-size:36px}
-}
-</style>
+  <title>NOVARA Ventures Management LLC | Global Investment Management</title>
+  <meta name="description" content="NOVARA Ventures Management LLC is a global investment management firm deploying venture and growth capital across resilient, high-impact sectors worldwide." />
+  <meta name="robots" content="index,follow" />
+
+  <style>
+    :root{
+      --bg:#0B0F16;
+      --panel:rgba(255,255,255,.06);
+      --stroke:rgba(255,255,255,.12);
+      --text:rgba(255,255,255,.92);
+      --muted:rgba(255,255,255,.72);
+      --muted2:rgba(255,255,255,.60);
+      --gold:#C6A75E;
+      --black:#000;
+      --shadow:0 12px 35px rgba(0,0,0,.35);
+      --radius:18px;
+      --radius2:24px;
+      --max:1180px;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      background:var(--bg);
+      color:var(--text);
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, "Noto Sans", "Helvetica Neue", sans-serif;
+      line-height:1.6;
+      text-rendering:optimizeLegibility;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+    }
+
+    a{color:inherit}
+    img{max-width:100%;display:block}
+    .container{max-width:var(--max);margin:0 auto;padding:0 18px}
+    .section{padding:78px 0}
+    .muted{color:var(--muted)}
+    .tiny{color:var(--muted2);font-size:12px}
+    .eyebrow{
+      color:var(--gold);
+      font-size:12px;
+      letter-spacing:3px;
+      font-weight:700;
+      text-transform:uppercase;
+      margin-bottom:10px;
+    }
+    h1{
+      margin:0;
+      font-size:46px;
+      line-height:1.12;
+      letter-spacing:-.02em;
+    }
+    h2{
+      margin:0;
+      font-size:32px;
+      line-height:1.2;
+      letter-spacing:-.01em;
+    }
+    h3{margin:0;font-size:16px}
+    p{margin:14px 0 0}
+
+    /* Background glow (safe, subtle) */
+    .bg-glow{
+      position:fixed; inset:0; pointer-events:none; z-index:-1;
+    }
+    .glow{
+      position:absolute; border-radius:999px; filter:blur(65px);
+      opacity:.9;
+    }
+    .glow.top{
+      width:520px;height:520px;left:50%;top:-220px;transform:translateX(-50%);
+      background:rgba(198,167,94,.12);
+    }
+    .glow.bottom{
+      width:520px;height:520px;left:-240px;bottom:-240px;
+      background:rgba(255,255,255,.06);
+    }
+
+    /* Header */
+    header{
+      position:sticky; top:0; z-index:100;
+      background:rgba(11,15,22,.88);
+      border-bottom:1px solid var(--stroke);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+    .topstrip{
+      display:flex; justify-content:space-between; gap:12px;
+      padding:10px 0;
+      font-size:12px;
+      color:rgba(255,255,255,.65);
+      flex-wrap:wrap;
+    }
+    .topstrip .left{display:flex;gap:16px;flex-wrap:wrap}
+    .topstrip .right{color:rgba(255,255,255,.45)}
+    .navrow{
+      display:flex; align-items:center; justify-content:space-between;
+      gap:14px; padding:14px 0;
+    }
+    .brand{
+      display:flex; align-items:center; gap:12px; text-decoration:none;
+      min-width: 220px;
+    }
+    .brandlogo{
+      width:44px;height:44px;border-radius:14px;
+      border:1px solid var(--stroke);
+      background:rgba(0,0,0,.25);
+      overflow:hidden;
+      display:flex;align-items:center;justify-content:center;
+    }
+    .brandlogo img{width:100%;height:100%;object-fit:contain;padding:6px}
+    .brandname{font-weight:800;letter-spacing:.06em;font-size:14px}
+    .brandsub{font-size:11px;letter-spacing:.18em;color:rgba(255,255,255,.60)}
+
+    nav{display:flex; gap:18px; align-items:center}
+    nav a{
+      text-decoration:none;
+      color:rgba(255,255,255,.78);
+      font-size:14px;
+      padding:10px 6px; /* tap-friendly */
+      border-radius:10px;
+    }
+    nav a:focus, nav a:hover{outline:none;color:#fff;background:rgba(255,255,255,.06)}
+
+    .btn{
+      display:inline-block;
+      padding:12px 16px;
+      border-radius:14px;
+      font-weight:800;
+      text-decoration:none;
+      border:1px solid transparent;
+      white-space:nowrap;
+      user-select:none;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .btn.primary{background:var(--gold);color:#0B0F16}
+    .btn.primary:hover{filter:brightness(1.06)}
+    .btn.secondary{border-color:var(--stroke);background:rgba(255,255,255,.05);color:#fff}
+    .btn.secondary:hover{background:rgba(255,255,255,.09)}
+
+    /* Mobile menu (pure CSS) */
+    .menuBtn{display:none}
+    .menuLabel{
+      display:none;
+      border:1px solid var(--stroke);
+      background:rgba(255,255,255,.05);
+      border-radius:14px;
+      padding:10px 12px;
+      font-weight:800;
+      font-size:14px;
+      cursor:pointer;
+      user-select:none;
+    }
+    .mobileNav{
+      display:none;
+      border-top:1px solid var(--stroke);
+      padding:10px 0 14px;
+    }
+    .mobileNav a{
+      display:block;
+      padding:12px 10px;
+      text-decoration:none;
+      color:rgba(255,255,255,.82);
+      border-radius:12px;
+    }
+    .mobileNav a:hover{background:rgba(255,255,255,.06);color:#fff}
+
+    /* Layout */
+    .grid{display:grid;gap:22px}
+    .grid2{grid-template-columns:1.2fr 1fr;align-items:start}
+    .grid2eq{grid-template-columns:1fr 1fr;align-items:start}
+    .grid3{grid-template-columns:repeat(3,1fr)}
+    .card{
+      background:var(--panel);
+      border:1px solid var(--stroke);
+      border-radius:var(--radius2);
+      padding:22px;
+      box-shadow:var(--shadow);
+    }
+    .divider{
+      margin:58px 0 0;
+      height:1px;
+      background:linear-gradient(90deg, transparent, rgba(255,255,255,.12), transparent);
+    }
+
+    /* Hero */
+    .chips{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:18px}
+    .chip{
+      border:1px solid var(--stroke);
+      background:rgba(255,255,255,.05);
+      border-radius:999px;
+      padding:7px 12px;
+      font-size:12px;
+      color:rgba(255,255,255,.84);
+    }
+    .lead{font-size:16px;color:var(--muted);max-width:720px}
+    .cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:18px}
+
+    /* Metrics */
+    .badgeRow{display:flex;align-items:center;gap:10px;margin-bottom:12px}
+    .miniLogo{
+      width:34px;height:34px;border-radius:12px;overflow:hidden;
+      border:1px solid var(--stroke); background:rgba(0,0,0,.25);
+    }
+    .miniLogo img{width:100%;height:100%;object-fit:contain;padding:6px}
+    .badgeText{
+      font-size:12px;
+      letter-spacing:.22em;
+      color:rgba(255,255,255,.55);
+      text-transform:uppercase;
+    }
+    .metrics{display:grid;gap:12px;grid-template-columns:repeat(3,1fr)}
+    .metricTitle{color:var(--gold);font-size:22px;font-weight:900}
+    .metricSub{color:rgba(255,255,255,.60);font-size:12px;margin-top:3px}
+
+    /* Panel */
+    .panelHead{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+    .panelTag{color:var(--gold);letter-spacing:.22em;font-weight:900;font-size:12px}
+    .panelItem{
+      border:1px solid var(--stroke);
+      background:rgba(255,255,255,.05);
+      border-radius:var(--radius);
+      padding:14px;
+      margin-top:12px;
+    }
+    .panelItemTitle{font-weight:900;font-size:14px}
+    .panelItemDesc{color:var(--muted);font-size:13px;margin-top:6px}
+    .disclaimer{
+      margin-top:14px;
+      border:1px solid var(--stroke);
+      background:rgba(255,255,255,.05);
+      border-radius:var(--radius);
+      padding:14px;
+      font-size:12px;
+      color:rgba(255,255,255,.60);
+      line-height:1.55;
+    }
+
+    /* Leadership */
+    .leaderPhoto{padding:12px}
+    .leaderPhoto img{border-radius:16px}
+    .leaderName{font-size:22px;font-weight:900;margin-top:2px}
+    .leaderTitle{
+      margin-top:10px;
+      color:var(--gold);
+      font-weight:900;
+      font-size:12px;
+      letter-spacing:.20em;
+      text-transform:uppercase;
+    }
+
+    /* Contact */
+    .contactRow{
+      display:grid;
+      grid-template-columns:110px 1fr;
+      gap:12px;
+      padding:10px 0;
+      border-bottom:1px solid rgba(255,255,255,.08);
+    }
+    .contactRow:last-child{border-bottom:none}
+    .label{color:rgba(255,255,255,.62);font-weight:900}
+    .map{
+      margin-top:16px;
+      border:1px solid var(--stroke);
+      border-radius:16px;
+      overflow:hidden;
+      background:rgba(0,0,0,.25);
+    }
+    iframe{border:0;width:100%;height:240px;display:block}
+
+    /* Form (simple + OS friendly) */
+    label{display:block;font-size:12px;color:rgba(255,255,255,.70);margin:10px 0 6px;font-weight:800}
+    input,textarea{
+      width:100%;
+      border-radius:14px;
+      border:1px solid rgba(255,255,255,.12);
+      background:rgba(0,0,0,.30);
+      color:rgba(255,255,255,.92);
+      padding:12px;
+      outline:none;
+      font-size:14px;
+    }
+    input:focus,textarea:focus{border-color:rgba(198,167,94,.65)}
+    .form2{display:grid;gap:12px;grid-template-columns:1fr 1fr}
+
+    /* Footer */
+    .footer{
+      border-top:1px solid var(--stroke);
+      padding:26px 0;
+      color:rgba(255,255,255,.50);
+      font-size:12px;
+      display:flex;
+      justify-content:space-between;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+
+    /* Responsive */
+    @media (max-width: 980px){
+      h1{font-size:36px}
+      .grid2, .grid2eq, .grid3, .metrics, .form2{grid-template-columns:1fr}
+      nav{display:none}
+      .topstrip{display:none}
+      .menuLabel{display:inline-block}
+      .btn.primary{display:none} /* hide top CTA, use contact button inside hero */
+    }
+    /* Mobile menu toggle */
+    #menuToggle:checked ~ .mobileNav{display:block}
+  </style>
 </head>
 
 <body>
+  <div class="bg-glow" aria-hidden="true">
+    <div class="glow top"></div>
+    <div class="glow bottom"></div>
+  </div>
 
-<header>
-<div class="container nav">
-<div class="logo">
-<img src="https://raw.githubusercontent.com/mhasannycct/novaraVc/refs/heads/main/NOVARA%20VENTURES%20MANAGEMENT%20LLC%20logo.png">
-<div>
-<div style="font-weight:700">NOVARA</div>
-<div style="font-size:11px;letter-spacing:2px;color:rgba(255,255,255,.6)">VENTURES MANAGEMENT LLC</div>
-</div>
-</div>
-<div>
-<a href="#about">About</a>
-<a href="#strategy">Strategy</a>
-<a href="#leadership">Leadership</a>
-<a href="#portfolio">Portfolio</a>
-<a href="#contact">Contact</a>
-</div>
-</div>
-</header>
+  <header>
+    <div class="container">
+      <div class="topstrip">
+        <div class="left">
+          <span>📍 3747 73rd Rd Ste #201, Jackson Heights, NY 11372</span>
+          <span>📞 +1 (347) 791-7183</span>
+          <span>✉️ info@novaravc.com</span>
+        </div>
+        <div class="right">Global Investment Management • Multi-Sector Venture</div>
+      </div>
 
-<section class="section hero">
-<div class="container">
-<h1>Building Enduring Global Value Through Strategic Capital</h1>
-<p>NOVARA Ventures Management LLC is a global investment management firm deploying venture and growth capital across resilient, high-impact sectors worldwide.</p>
-<div style="margin-top:25px">
-<a href="#strategy" class="btn btn-primary">Explore Strategy →</a>
-<a href="#contact" class="btn btn-secondary">Partner With Us</a>
-</div>
-</div>
-</section>
+      <div class="navrow">
+        <a class="brand" href="#top">
+          <div class="brandlogo">
+            <img src="https://raw.githubusercontent.com/mhasannycct/novaraVc/refs/heads/main/NOVARA%20VENTURES%20MANAGEMENT%20LLC%20logo.png" alt="NOVARA Logo" loading="eager">
+          </div>
+          <div class="brandtext">
+            <div class="brandname">NOVARA</div>
+            <div class="brandsub">VENTURES MANAGEMENT LLC</div>
+          </div>
+        </a>
 
-<section id="about" class="section">
-<div class="container grid grid-2">
-<div>
-<div class="eyebrow">ABOUT</div>
-<h2>A Global Perspective. A Disciplined Approach.</h2>
-<p>We combine venture agility with institutional discipline—identifying scalable businesses, transformative technologies, and long-term value opportunities across emerging and developed markets.</p>
-</div>
-<div>
-<div class="card">
-<h3>Governance-First</h3>
-<p>Rigorous diligence, alignment, and long-term stewardship.</p>
-</div>
-<div class="card">
-<h3>Cross-Border Access</h3>
-<p>Global networks and structuring capabilities across key markets.</p>
-</div>
-</div>
-</div>
-</section>
+        <nav aria-label="Primary">
+          <a href="#about">About</a>
+          <a href="#strategy">Strategy</a>
+          <a href="#leadership">Leadership</a>
+          <a href="#portfolio">Portfolio</a>
+          <a href="#global">Global</a>
+          <a href="#contact">Contact</a>
+        </nav>
 
-<section id="strategy" class="section">
-<div class="container">
-<div class="eyebrow">STRATEGY</div>
-<h2>Strategic Multi-Sector Allocation</h2>
-<div class="grid grid-3">
-<div class="card"><h3>Venture & Growth</h3><p>Early-stage through growth equity investments.</p></div>
-<div class="card"><h3>Structured Capital</h3><p>Flexible structures that improve downside protection.</p></div>
-<div class="card"><h3>Multi-Asset Lens</h3><p>Diversified allocation across resilient sectors.</p></div>
-</div>
-</div>
-</section>
+        <!-- Mobile menu -->
+        <input class="menuBtn" type="checkbox" id="menuToggle" />
+        <label class="menuLabel" for="menuToggle">Menu</label>
 
-<section id="leadership" class="section">
-<div class="container grid grid-2">
-<div class="card">
-<img src="https://raw.githubusercontent.com/mhasannycct/novaraVc/refs/heads/main/Founder_CEO.jpg" style="width:100%;border-radius:15px;">
-</div>
-<div>
-<div class="eyebrow">LEADERSHIP</div>
-<h2>Mahamudul Hasan</h2>
-<div style="color:var(--gold);font-weight:700;margin-top:10px">Founder & Chief Executive Officer</div>
-<p>Mahamudul Hasan is a global fintech founder building Boost Card—an AI-powered, borderless credit and remittance platform expanding financial access worldwide.</p>
-<p>He also leads The Skill Hire, BraineryTech, and serves as Chairman of Lumen Communitatis Inc.</p>
-</div>
-</div>
-</section>
+        <a class="btn primary" href="#contact">Partner With Us →</a>
+      </div>
 
-<section id="portfolio" class="section">
-<div class="container">
-<div class="eyebrow">PORTFOLIO</div>
-<h2>Select Investments & Partnerships</h2>
-<div class="grid grid-3">
-<div class="card"><h3>Portfolio Highlights</h3><p>Public investments and strategic partnerships.</p></div>
-<div class="card"><h3>Case Studies</h3><p>Growth, governance, and strategic value creation.</p></div>
-<div class="card"><h3>Investment Themes</h3><p>Fintech • AI • Real Assets • Global Markets</p></div>
-</div>
-</div>
-</section>
+      <div class="mobileNav">
+        <a href="#about" onclick="document.getElementById('menuToggle').checked=false">About</a>
+        <a href="#strategy" onclick="document.getElementById('menuToggle').checked=false">Strategy</a>
+        <a href="#leadership" onclick="document.getElementById('menuToggle').checked=false">Leadership</a>
+        <a href="#portfolio" onclick="document.getElementById('menuToggle').checked=false">Portfolio</a>
+        <a href="#global" onclick="document.getElementById('menuToggle').checked=false">Global</a>
+        <a href="#contact" onclick="document.getElementById('menuToggle').checked=false">Contact</a>
+      </div>
+    </div>
+  </header>
 
-<section id="contact" class="section">
-<div class="container grid grid-2">
-<div>
-<div class="eyebrow">CONTACT</div>
-<h2>Partner With NOVARA</h2>
-<div class="card">
-<p><strong>Email:</strong> info@novaravc.com</p>
-<p><strong>Phone:</strong> +1 (347) 791-7183</p>
-<p><strong>Office:</strong> 3747 73rd Rd Ste #201, Jackson Heights, NY 11372</p>
-<p style="font-size:12px;margin-top:20px;color:rgba(255,255,255,.6)">
-For informational purposes only. Nothing on this website constitutes an offer to sell or solicitation of securities.
-</p>
-</div>
-</div>
-<div class="card">
-<h3>Inquiry</h3>
-<form action="mailto:info@novaravc.com" method="post" enctype="text/plain">
-<input type="text" placeholder="First Name" style="width:100%;padding:12px;margin-top:15px;border-radius:10px;border:1px solid var(--stroke);background:#000;color:#fff">
-<input type="email" placeholder="Email" style="width:100%;padding:12px;margin-top:15px;border-radius:10px;border:1px solid var(--stroke);background:#000;color:#fff">
-<textarea placeholder="Message" rows="5" style="width:100%;padding:12px;margin-top:15px;border-radius:10px;border:1px solid var(--stroke);background:#000;color:#fff"></textarea>
-<button class="btn btn-primary" type="submit" style="margin-top:15px">Submit →</button>
-</form>
-</div>
-</div>
-</section>
+  <main id="top">
+    <!-- HERO -->
+    <section class="section">
+      <div class="container">
+        <div class="grid grid2">
+          <div>
+            <div class="chips">
+              <span class="chip">🌐 Global Investment Management</span>
+              <span class="chip">🧩 Multi-Sector Venture & Growth</span>
+              <span class="chip">🛡️ Institutional Discipline</span>
+            </div>
 
-<div class="container footer">
-<div>© <script>document.write(new Date().getFullYear())</script> NOVARA Ventures Management LLC. All rights reserved.</div>
-<div>Author/Writer: Mahamudul Hasan</div>
-</div>
+            <h1>Building Enduring Global Value Through Strategic Capital</h1>
 
+            <p class="lead">
+              NOVARA Ventures Management LLC is a global investment management firm deploying venture and growth capital
+              across resilient, high-impact sectors worldwide. We combine entrepreneurial insight with institutional
+              discipline—focused on risk-adjusted returns, long-term value creation, and responsible capital deployment.
+            </p>
+
+            <div class="cta">
+              <a class="btn primary" href="#strategy">Explore Our Strategy →</a>
+              <a class="btn secondary" href="#contact">Partner With Us</a>
+            </div>
+
+            <div class="card" style="margin-top:20px;">
+              <div class="badgeRow">
+                <div class="miniLogo">
+                  <img src="https://raw.githubusercontent.com/mhasannycct/novaraVc/refs/heads/main/NOVARA%20VENTURES%20MANAGEMENT%20LLC%20logo.png" alt="NOVARA" loading="lazy">
+                </div>
+                <div class="badgeText">Global Investment Management • Multi-Sector Venture</div>
+              </div>
+
+              <div class="metrics">
+                <div>
+                  <div class="metricTitle">Global</div>
+                  <div class="metricSub">Cross-border structuring & access</div>
+                </div>
+                <div>
+                  <div class="metricTitle">Multi-Sector</div>
+                  <div class="metricSub">Venture, growth, and structured capital</div>
+                </div>
+                <div>
+                  <div class="metricTitle">Disciplined</div>
+                  <div class="metricSub">Governance-first investment process</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <div class="card">
+              <div class="panelHead">
+                <div style="font-weight:900;font-size:14px;">Investment Lens</div>
+                <div class="panelTag">NOVARA</div>
+              </div>
+
+              <div class="panelItem">
+                <div class="panelItemTitle">📈 Risk-Adjusted Returns</div>
+                <div class="panelItemDesc">Emphasis on asymmetric upside, capital preservation, and repeatable decision-making.</div>
+              </div>
+
+              <div class="panelItem">
+                <div class="panelItemTitle">✨ Founder-Centric Partnership</div>
+                <div class="panelItemDesc">We support teams with strategic guidance, networks, and operational discipline.</div>
+              </div>
+
+              <div class="panelItem">
+                <div class="panelItemTitle">🏛️ Asset-Backed Optionality</div>
+                <div class="panelItemDesc">Select real asset and structured opportunities where risk is measurable.</div>
+              </div>
+
+              <div class="disclaimer">
+                For informational purposes only. Nothing on this site constitutes an offer to sell, or a solicitation of an offer to buy, any security or investment product.
+                Any such offer will be made only pursuant to definitive documentation and in accordance with applicable law.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="divider"></div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="section">
+      <div class="container">
+        <div class="grid grid2eq">
+          <div>
+            <div class="eyebrow">About</div>
+            <h2>A Global Perspective. A Disciplined Approach.</h2>
+            <p class="muted">
+              NOVARA Ventures Management LLC is a private global investment management firm deploying strategic capital
+              across high-growth and resilient sectors worldwide.
+            </p>
+          </div>
+
+          <div>
+            <p class="muted">
+              We combine venture agility with institutional discipline—identifying scalable businesses, transformative
+              technologies, and long-term value opportunities across emerging and developed markets.
+            </p>
+            <p class="muted">
+              Our philosophy is rooted in capital preservation, asymmetric upside, and sustainable wealth creation. We
+              prioritize governance, transparency, and responsible deployment across every stage.
+            </p>
+
+            <div class="grid grid2eq" style="margin-top:18px;">
+              <div class="card">
+                <h3>🛡️ Governance-First</h3>
+                <p class="tiny">Rigorous diligence, alignment, and long-term stewardship.</p>
+              </div>
+              <div class="card">
+                <h3>🌐 Cross-Border Access</h3>
+                <p class="tiny">Global networks and structuring capabilities across key markets.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="divider"></div>
+      </div>
+    </section>
+
+    <!-- STRATEGY -->
+    <section id="strategy" class="section">
+      <div class="container">
+        <div class="eyebrow">Strategy</div>
+        <h2>Strategic Multi-Sector Allocation</h2>
+        <p class="muted">
+          We invest where innovation intersects with durable demand—balancing venture opportunity with risk-aware construction.
+        </p>
+
+        <div class="grid grid3" style="margin-top:18px;">
+          <div class="card">
+            <h3>✨ Venture & Growth</h3>
+            <p class="tiny">Early-stage through growth equity in category-defining platforms.</p>
+          </div>
+          <div class="card">
+            <h3>📈 Structured Capital</h3>
+            <p class="tiny">Flexible structures that improve downside protection and alignment.</p>
+          </div>
+          <div class="card">
+            <h3>🧩 Multi-Asset Lens</h3>
+            <p class="tiny">Allocation across sectors and cycles to support resilient returns.</p>
+          </div>
+        </div>
+
+        <div class="card" style="margin-top:18px;">
+          <h3>Core Focus Areas</h3>
+          <div class="grid grid3" style="margin-top:14px;">
+            <div class="panelItem">Financial Technology & Digital Infrastructure</div>
+            <div class="panelItem">Enterprise Software & Artificial Intelligence</div>
+            <div class="panelItem">Real Estate & Asset-Backed Opportunities</div>
+            <div class="panelItem">Healthcare & Life Sciences</div>
+            <div class="panelItem">Emerging Market Growth Platforms</div>
+            <div class="panelItem">Strategic Special Situations</div>
+          </div>
+        </div>
+
+        <div class="divider"></div>
+      </div>
+    </section>
+
+    <!-- LEADERSHIP -->
+    <section id="leadership" class="section">
+      <div class="container">
+        <div class="eyebrow">Leadership</div>
+        <h2>Founder & Chief Executive Officer</h2>
+        <p class="muted">Vision-driven leadership with global fintech and venture expertise.</p>
+
+        <div class="grid grid2eq" style="margin-top:18px;align-items:center;">
+          <div class="card leaderPhoto">
+            <img src="https://raw.githubusercontent.com/mhasannycct/novaraVc/refs/heads/main/Founder_CEO.jpg" alt="Mahamudul Hasan - Founder & CEO" loading="lazy">
+          </div>
+          <div>
+            <div class="leaderName">Mahamudul Hasan</div>
+            <div class="leaderTitle">Founder & Chief Executive Officer</div>
+            <p class="muted">
+              Mahamudul Hasan is a global fintech founder and technology executive building Boost Card — an AI-powered,
+              borderless credit and remittance platform designed to expand financial access for the next billion users.
+            </p>
+            <p class="muted">
+              He also leads The Skill Hire, BraineryTech, and serves as Chairman of Lumen Communitatis Inc., driving
+              innovation across fintech, talent solutions, and global community impact.
+            </p>
+          </div>
+        </div>
+
+        <div class="divider"></div>
+      </div>
+    </section>
+
+    <!-- PORTFOLIO -->
+    <section id="portfolio" class="section">
+      <div class="container">
+        <div class="eyebrow">Portfolio</div>
+        <h2>Select Investments & Partnerships</h2>
+        <p class="muted">
+          We invest with a long-term, governance-first approach. When appropriate, select investments, strategic partnerships,
+          and case studies are announced here.
+        </p>
+
+        <div class="grid grid3" style="margin-top:18px;">
+          <div class="card">
+            <h3>Portfolio Highlights</h3>
+            <p class="tiny">Add portfolio logos, thesis summary, geography, and stage as deals become public.</p>
+          </div>
+          <div class="card">
+            <h3>Case Studies</h3>
+            <p class="tiny">Showcase outcomes: growth, governance, partnerships, and strategic value creation.</p>
+          </div>
+          <div class="card">
+            <h3>Investment Themes</h3>
+            <p class="tiny">Fintech Infrastructure • AI & Enterprise • Asset-Backed Strategy • Emerging Markets</p>
+          </div>
+        </div>
+
+        <div class="divider"></div>
+      </div>
+    </section>
+
+    <!-- GLOBAL -->
+    <section id="global" class="section">
+      <div class="container">
+        <div class="eyebrow">Global</div>
+        <h2>Global Reach. Strategic Access.</h2>
+        <p class="muted">
+          NOVARA operates with a global outlook, enabling cross-border capital flow and strategic partnerships across
+          North America, the Middle East, Asia, and emerging markets.
+        </p>
+
+        <div class="grid grid2eq" style="margin-top:18px;">
+          <div class="card">
+            <h3>🌐 Cross-Border Structuring</h3>
+            <p class="tiny">Entity, tax, and compliance-aware structuring for global investment execution.</p>
+          </div>
+          <div class="card">
+            <h3>🛡️ Governance & Controls</h3>
+            <p class="tiny">Clear processes designed for institutional trust, reporting, and long-term stewardship.</p>
+          </div>
+        </div>
+
+        <div class="divider"></div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="section">
+      <div class="container">
+        <div class="grid grid2eq">
+          <div>
+            <div class="eyebrow">Contact</div>
+            <h2>Partner With NOVARA</h2>
+            <p class="muted">For investment inquiries, partnerships, or institutional collaboration, reach out.</p>
+
+            <div class="card" style="margin-top:18px;">
+              <div class="contactRow">
+                <div class="label">Email</div>
+                <div>info@novaravc.com</div>
+              </div>
+              <div class="contactRow">
+                <div class="label">Phone</div>
+                <div>+1 (347) 791-7183</div>
+              </div>
+              <div class="contactRow">
+                <div class="label">Office</div>
+                <div>3747 73rd Rd Ste #201, Jackson Heights, NY 11372</div>
+              </div>
+
+              <div class="disclaimer" style="margin-top:16px;">
+                For informational purposes only. Nothing herein constitutes investment, legal, tax, or accounting advice.
+                Any offering is made only through definitive documentation and to qualified parties, as applicable.
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <div class="card">
+              <h3>Inquiry Form</h3>
+              <p class="tiny" style="margin-top:8px;">
+                This form uses your visitor’s email client (mailto). For a true server-side form on cPanel, ask me for a PHP contact form.
+              </p>
+
+              <div class="map">
+                <iframe
+                  title="NOVARA Office Map"
+                  loading="lazy"
+                  referrerpolicy="no-referrer-when-downgrade"
+                  src="https://www.google.com/maps?q=3747%2073rd%20Rd%20Ste%20%23201%2C%20Jackson%20Heights%2C%20NY%2011372&output=embed">
+                </iframe>
+              </div>
+
+              <form action="mailto:info@novaravc.com" method="post" enctype="text/plain">
+                <div class="form2">
+                  <div>
+                    <label for="fn">First Name</label>
+                    <input id="fn" name="first_name" autocomplete="given-name" placeholder="John" />
+                  </div>
+                  <div>
+                    <label for="ln">Last Name</label>
+                    <input id="ln" name="last_name" autocomplete="family-name" placeholder="Smith" />
+                  </div>
+                </div>
+
+                <label for="em">Email</label>
+                <input id="em" name="email" type="email" autocomplete="email" placeholder="name@company.com" />
+
+                <label for="msg">Message</label>
+                <textarea id="msg" name="message" rows="5" placeholder="Tell us about your partnership or investment inquiry..."></textarea>
+
+                <div style="margin-top:14px;">
+                  <button type="submit" class="btn primary">Submit Inquiry →</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer" style="margin-top:52px;">
+          <div>© <span id="year"></span> NOVARA Ventures Management LLC. All rights reserved.</div>
+          <div>Author/Writer: Mahamudul Hasan</div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
